@@ -1,0 +1,5 @@
+The interface is designed for Glacial Indifference.
+
+The repository intentionally does not redistribute font files. If you add
+Glacial Indifference .woff2 files to assets/, verify that their license permits
+redistribution before committing them to GitHub.

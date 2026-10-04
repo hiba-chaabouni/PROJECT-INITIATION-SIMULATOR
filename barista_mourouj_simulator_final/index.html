@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barista Mourouj — Project Initiation Simulator</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">B</div><div><strong>BARISTA MOUROUJ</strong><span>PROJECT INITIATION SIMULATOR</span></div></div>
+  <div class="top-actions"><span class="assumption">CLASSROOM SIMULATION</span><button id="restartBtn" class="ghost-btn">Restart</button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy"><p class="eyebrow">CHAPTER 3 · INITIATING PROJECTS</p><h1>Build the project.<br><span>See the consequences.</span></h1><p>One class. One project. Every majority decision changes the conditions for the next one.</p></div>
+  <div class="hero-facts"><div><small>PROJECT</small><b>Barista Mourouj Branch Opening</b></div><div><small>TARGET OPENING</small><b>01 Jul 2027</b></div><div><small>BUDGET CEILING</small><b>650,000 TND</b></div></div>
+</section>
+<section class="progress-card"><div class="progress-head"><div><span class="stage-label" id="stageLabel">STAGE 1</span><h2 id="stageTitle">Pre-initiation</h2></div><div class="stage-count" id="stageCount">1 / 12</div></div><div class="progress-track"><div id="progressBar"></div></div><div class="chapter-note" id="chapterNote">Determine constraints, sponsor, project manager and organizational expectations before formal initiation.</div></section>
+<section class="dashboard-grid">
+<aside class="metrics-panel">
+  <div class="panel-title"><span>PROJECT STATE</span><span class="live-dot">● LIVE</span></div>
+  <div class="metric"><div class="metric-top"><span>Scope</span><b id="scopeMetric">Core</b></div><div class="meter"><i id="scopeBar"></i></div></div>
+  <div class="metric"><div class="metric-top"><span>Estimated cost</span><b id="budgetMetric">650,000 TND</b></div><div class="meter"><i id="budgetBar"></i></div></div>
+  <div class="metric"><div class="metric-top"><span>Calculated finish</span><b id="scheduleMetric">01 Jul 2027</b></div><div class="meter"><i id="scheduleBar"></i></div></div>
+  <div class="metric"><div class="metric-top"><span>Stakeholder support</span><b id="supportMetric">50 / 100</b></div><div class="meter"><i id="supportBar"></i></div></div>
+  <div class="metric"><div class="metric-top"><span>Risk</span><b id="riskMetric">Low</b></div><div class="risk-pill low" id="riskPill">LOW</div></div>
+  <div class="mini-box"><small>CURRENT DECISIONS</small><div id="decisionMini">0 / 12</div></div>
+</aside>
+<section class="decision-panel">
+  <div class="given-box"><div class="tag">GIVEN BEFORE THIS VOTE</div><div id="givenFacts"></div></div>
+  <div class="question-wrap"><span class="question-number" id="questionNumber">D1</span><h2 id="question"></h2><p id="questionHint"></p></div>
+  <div class="options" id="options"></div>
+  <div class="vote-footer"><button id="voteBtn" class="primary-btn" disabled>Record class majority →</button><span>Presenter enters the class vote. No answer is objectively “correct”.</span></div>
+  <div id="consequence" class="consequence hidden"></div>
+</section>
+<aside class="output-panel">
+  <div class="panel-tabs"><button class="tab active" data-tab="log">Decision log</button><button class="tab" data-tab="docs">Outputs</button></div>
+  <div id="tab-log" class="tab-content"><div id="decisionLog" class="log-list"><div class="empty">Decisions will appear here as the class progresses.</div></div></div>
+  <div id="tab-docs" class="tab-content hidden"><div class="doc-card"><span>BUSINESS CASE</span><b id="docBusiness">In progress</b></div><div class="doc-card"><span>STAKEHOLDER REGISTER</span><b id="docStake">Not generated</b></div><div class="doc-card"><span>MANAGEMENT STRATEGY</span><b id="docStrategy">Not generated</b></div><div class="doc-card"><span>PROJECT CHARTER</span><b id="docCharter">Progressive</b></div><div class="doc-card"><span>RISK REGISTER</span><b id="docRisk">Initial risks loaded</b></div></div>
+</aside>
+</section>
+
+<section id="charterSection" class="charter-section hidden">
+  <div class="section-heading"><div><p class="eyebrow">MAJOR REVEAL</p><h2>Project Charter</h2><p class="section-subtitle">A one-page, company-style charter assembled from the class's initiation decisions.</p></div><div class="section-actions"><span class="status-chip" id="statusChip">DRAFT</span><button id="printCharterBtn" class="outline-btn">Print / Save Charter</button></div></div>
+  <div class="charter-document">
+    <div class="charter-doc-title">PROJECT CHARTER</div>
+    <div class="charter-header-grid">
+      <div class="field field-wide"><label>PROJECT NAME</label><strong id="charterProjectName"></strong></div>
+      <div class="field"><label>PROJECT MANAGER</label><strong id="charterPM"></strong></div>
+      <div class="field"><label>PROJECT SPONSOR</label><strong id="charterSponsor"></strong></div>
+      <div class="field field-wide"><label>PM CONTACT</label><strong id="charterPMContact"></strong></div>
+      <div class="field"><label>AUTHORIZATION DATE</label><strong id="charterAuth"></strong></div>
+      <div class="field"><label>ORGANIZATIONAL UNIT</label><strong id="charterUnit"></strong></div>
+    </div>
+    <div class="charter-baseline-grid">
+      <div class="field"><label>ESTIMATED COST</label><strong id="charterCost"></strong></div>
+      <div class="field"><label>BUDGET CEILING</label><strong id="charterCeiling"></strong></div>
+      <div class="field"><label>EXPECTED START</label><strong id="charterStart"></strong></div>
+      <div class="field"><label>CALCULATED COMPLETION</label><strong id="charterFinish"></strong></div>
+    </div>
+
+    <div class="charter-block">
+      <div class="block-heading">PROJECT OVERVIEW</div>
+      <div class="overview-table">
+        <div class="label-cell">PROBLEM / OPPORTUNITY</div><div class="value-cell" id="charterProblem"></div>
+        <div class="label-cell">PURPOSE / BUSINESS NEED</div><div class="value-cell" id="charterPurpose"></div>
+        <div class="label-cell">BUSINESS CASE</div><div class="value-cell" id="charterBusinessCase"></div>
+        <div class="label-cell">OBJECTIVES &amp; SUCCESS METRICS</div><div class="value-cell" id="charterGoals"></div>
+        <div class="label-cell">EXPECTED DELIVERABLES</div><div class="value-cell"><ul id="charterDeliverables"></ul></div>
+      </div>
+    </div>
+
+    <div class="charter-two-col">
+      <div class="charter-block">
+        <div class="block-heading scope-heading">PROJECT SCOPE</div>
+        <div class="scope-table"><div class="scope-label">WITHIN SCOPE</div><div class="scope-value" id="charterIn"></div><div class="scope-label">OUTSIDE OF SCOPE</div><div class="scope-value"><ul id="charterOut"></ul></div></div>
+      </div>
+      <div class="charter-block">
+        <div class="block-heading">APPROACH &amp; CONSTRAINTS</div>
+        <div class="charter-text-block" id="charterApproach"></div>
+        <div class="mini-note"><b>Mandatory opening capabilities:</b> espresso/beverage service, indoor seating, Wi-Fi, digital POS/payment processing, health and hygiene compliance.</div>
+      </div>
+    </div>
+
+    <div class="charter-block">
+      <div class="block-heading">TENTATIVE SCHEDULE</div>
+      <table class="charter-table"><thead><tr><th>KEY MILESTONE</th><th>START</th><th>FINISH</th></tr></thead><tbody id="charterSchedule"></tbody></table>
+    </div>
+
+    <div class="charter-block">
+      <div class="block-heading">MAJOR RISKS</div>
+      <table class="charter-table"><thead><tr><th>ID</th><th>RISK</th><th>CAUSE</th><th>POTENTIAL IMPACT</th></tr></thead><tbody id="charterRisks"></tbody></table>
+    </div>
+
+    <div class="charter-block">
+      <div class="block-heading">ROLES &amp; RESPONSIBILITIES</div>
+      <table class="charter-table"><thead><tr><th>STAKEHOLDER</th><th>ROLE</th><th>RESPONSIBILITY</th><th>SIGN-OFF</th></tr></thead><tbody id="charterRoles"></tbody></table>
+    </div>
+
+    <div class="charter-two-col bottom-blocks">
+      <div class="charter-block"><div class="block-heading">COMMENTS / NOTES</div><ul id="charterComments" class="notes-list"></ul></div>
+      <div class="charter-block"><div class="block-heading">FORMAL AUTHORIZATION</div><p id="charterSignoff" class="signoff-text"></p><div class="signature-grid"><div>PROJECT SPONSOR<br><span>Signature: __________________</span></div><div>PROJECT MANAGER<br><span>Signature: __________________</span></div><div>KEY STAKEHOLDER<br><span>Signature: __________________</span></div></div></div>
+    </div>
+    <div class="charter-footnote">Classroom simulation · All Barista-specific dates, financial figures, thresholds and simulator effects are fictional simulation assumptions.</div>
+  </div>
+</section>
+
+<section id="finalSection" class="final-section hidden">
+  <div class="final-head"><div><p class="eyebrow">SIMULATION COMPLETE</p><h2 id="finalTitle">Project evaluation</h2><p id="finalNarrative"></p></div><div id="finalStatus" class="final-status"></div></div>
+  <div class="final-grid"><div><div class="final-metrics" id="finalMetrics"></div><div class="criteria-list" id="criteriaList"></div></div><div class="drivers"><h3>Top 3 decision drivers</h3><ol id="driversList"></ol><button id="whatIfBtn" class="outline-btn">Run a “What if?” comparison</button><div id="whatIf" class="what-if hidden"></div></div></div>
+</section>
+<section class="chapter-footer"><b>Chapter 3 connection</b><span>Pre-initiation → Business case → Stakeholders → Charter → Kick-off</span><small>All Barista-specific dates, financial figures, thresholds and simulator effects are fictional classroom assumptions.</small></section>
+</main></div>
+<script src="js/app.js"></script>
+</body></html>
